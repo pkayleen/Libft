@@ -21,10 +21,10 @@ int main()
     s1 = "Abcdef";
 	s2 = "Abcdef";
 
-    //unsigned char s[6] = "hello!";
-    /*printf("function ft_strlen: %zu\n", ft_strlen(s1));
+    unsigned char s[6] = "hello!";
+    printf("function ft_strlen: %zu\n", ft_strlen(s1));
     printf("function strlen: %zu\n", strlen(s1));
-	*/
+
     printf("function ft_strncmp: %d\n", ft_strncmp(s1, s2, 10));
     printf("function strncmp: %d\n", strncmp(s1, s2, 10));
 
