@@ -14,6 +14,7 @@
 #include <stdio.h> //для printf
 #include <stdlib.h> // для atoi
 #include <ctype.h> // для isalpha, isdigit, isascii
+# include <bsd/string.h>
 
 int main()
 {
@@ -57,6 +58,16 @@ int main()
     char s4[4]= "man";
     printf("%lu\n", strlcpy(s3, s4, 10));
     printf("massive s3 after strlcpy: %s\n", s3);
+    printf("%lu\n", ft_strlcpy(s3, s4, 10));
+    printf("massive s3 after ft_strlcpy: %s\n", s3);
+
+    char s5[10] = "hellohell";
+    char s6[30]= "manmanman";
+    printf("%lu\n", strlcpy(s5, s6, 10));
+    printf("massive s3 after strlcpy: %s\n", s5);
+    printf("%lu\n", ft_strlcpy(s5, s6, 10));
+    printf("massive s3 after ft_strlcpy: %s\n", s5);
+    
 
     int c;
 
