@@ -6,7 +6,7 @@
 /*   By: pkayleen <pkayleen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 21:58:29 by pkayleen          #+#    #+#             */
-/*   Updated: 2020/11/13 22:20:14 by pkayleen         ###   ########.fr       */
+/*   Updated: 2020/11/14 00:04:30 by pkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,22 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	i = 0;
 	subs = (char *)malloc(len * sizeof(char) + 1);
-	while (i != start)
+	if (!s || !subs)
+		return (NULL);
+	if (start >= ft_strlen(s))
 	{
-		i++;
+		subs[i] = '\0';
+		return (subs);
 	}
+	while (i != start)
+		i++;
 	j = 0;
-	while (j != len - 1 && s[i] != '\0')
+	while (j != len && s[i] != '\0')
 	{
 		subs[j] = s[i];
 		i++;
 		j++;
 	}
+	subs[j] = '\0';
 	return (subs);
 }
