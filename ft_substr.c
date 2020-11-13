@@ -6,7 +6,7 @@
 /*   By: pkayleen <pkayleen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 21:58:29 by pkayleen          #+#    #+#             */
-/*   Updated: 2020/11/14 00:04:30 by pkayleen         ###   ########.fr       */
+/*   Updated: 2020/11/14 00:33:01 by pkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	j;
 
 	i = 0;
-	subs = (char *)malloc(len * sizeof(char) + 1);
+	subs = (char *)malloc(len + 1);
 	if (!s || !subs)
 		return (NULL);
 	if (start >= ft_strlen(s))
