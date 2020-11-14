@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pkayleen <pkayleen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/14 00:07:22 by pkayleen          #+#    #+#             */
-/*   Updated: 2020/11/14 20:46:35 by pkayleen         ###   ########.fr       */
+/*   Created: 2020/11/14 21:57:04 by pkayleen          #+#    #+#             */
+/*   Updated: 2020/11/15 00:42:26 by pkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*s;
-	int		i;
-	int		j;
+	char	num;
 
-	i = 0;
-	if (!s1 || !s2)
-		return (NULL);
-	s = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!s)
-		return (NULL);
-	while (s1[i] != '\0' && (s1))
+	if (fd < 0)
+		return ;
+	if (n < 0)
 	{
-		s[i] = s1[i];
-		i++;
+		write(fd, "-", 1);
+		n *= -1;
 	}
-	j = 0;
-	while (s2[j] != '\0' && (s2))
+	if (n == 2147483647)
 	{
-		s[i + j] = s2[j];
-		j++;
+		write(fd, "2147483647", 10);
+		return ;
 	}
-	s[i + j] = '\0';
-	return (s);
+	if (n >= 10)
+		ft_putnbr_fd(n / 10, fd);
+	num = n % 10 + '\0';
+	write(fd, &num, 1);
 }
