@@ -6,7 +6,7 @@
 /*   By: pkayleen <pkayleen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 19:50:45 by pkayleen          #+#    #+#             */
-/*   Updated: 2020/11/15 20:46:00 by pkayleen         ###   ########.fr       */
+/*   Updated: 2020/11/16 19:15:34 by pkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static long int	if_neg(long int *num, char *s, long int *len)
 		return (0);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	char		*str;
 	long int	len;
@@ -68,16 +68,13 @@ char	*ft_itoa(int n)
 	str = (char *)malloc(len + 1);
 	if (!str)
 		return (NULL);
-	if (num == -2147483648)
-		return ("-2147483648");
 	i = if_neg(&num, str, &len);
 	while (len != 0)
 	{
 		d = num / (power(10, len - 1));
-		str[i] = d + '0';
+		str[i++] = d + '0';
 		num = num - d * (power(10, len - 1));
 		len--;
-		i++;
 	}
 	str[i] = '\0';
 	return (str);
