@@ -6,7 +6,7 @@
 /*   By: pkayleen <pkayleen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 00:29:56 by pkayleen          #+#    #+#             */
-/*   Updated: 2020/11/16 21:34:16 by pkayleen         ###   ########.fr       */
+/*   Updated: 2020/11/18 00:32:01 by pkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ char				*ft_strtrim(char const *s1, char const *set)
 	unsigned int	i;
 	unsigned int	j;
 
-	len = 0;
-	while (set[len] != '\0')
-	{
-		len++;
-	}
+	if (!s1 || !set)
+		return(NULL);
+	len = ft_strlen(set);
 	s2 = (char *)malloc(ft_strlen(s1) - len + 1);
 	i = 0;
-	if (strncmp(s1, set, len) == 0 && ft_strlen(s1) >= len)
-		i = i + len;
+	while (strchr(set, s1[i], len) != 0 && s1[i] != '\0')
+		i++;
+
+	while(s1[i] != '\0' && )
 	j = 0;
 	while (s1[i] != '\0' && strncmp(s1, set, len) != 0 && check_endset(s1, set))
 	{
