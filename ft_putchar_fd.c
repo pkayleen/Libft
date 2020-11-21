@@ -6,7 +6,7 @@
 /*   By: pkayleen <pkayleen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 21:04:36 by pkayleen          #+#    #+#             */
-/*   Updated: 2020/11/14 21:24:44 by pkayleen         ###   ########.fr       */
+/*   Updated: 2020/11/19 01:08:02 by pkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
+	if (fd < 0)
+		return ;
 	write(fd, &c, 1);
 }

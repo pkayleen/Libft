@@ -6,7 +6,7 @@
 /*   By: pkayleen <pkayleen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 21:53:41 by pkayleen          #+#    #+#             */
-/*   Updated: 2020/11/14 21:56:06 by pkayleen         ###   ########.fr       */
+/*   Updated: 2020/11/19 03:00:46 by pkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
+	if (!s || fd < 0)
+		return ;
 	write(fd, s, ft_strlen(s));
 	write(fd, "\n", 1);
 }

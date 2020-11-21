@@ -6,7 +6,7 @@
 /*   By: pkayleen <pkayleen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 16:23:55 by pkayleen          #+#    #+#             */
-/*   Updated: 2020/11/09 19:16:41 by pkayleen         ###   ########.fr       */
+/*   Updated: 2020/11/14 20:44:36 by pkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,3 @@ char	*ft_strrchr(const char *s, int c)
 		return (NULL);
 	return ((char *)(s + res));
 }
-
-
-/*	printf("%d ", res);
-	while (s != res)
-	{
-		s++;
-		if (*s == '\0' && c != '\0')
-			return (NULL);
-	}
-*/

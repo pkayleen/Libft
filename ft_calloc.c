@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pkayleen <pkayleen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/30 19:04:52 by pkayleen          #+#    #+#             */
-/*   Updated: 2020/11/19 03:11:25 by pkayleen         ###   ########.fr       */
+/*   Created: 2020/11/20 21:57:28 by pkayleen          #+#    #+#             */
+/*   Updated: 2020/11/20 22:59:37 by pkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *str, int c, size_t len)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t			i;
-	unsigned char	*s;
+	void	*arr;
 
-	s = (unsigned char	*)str;
-	i = 0;
-	while (i < len)
-	{
-		s[i] = (unsigned char)c;
-		i++;
-	}
-	return (s);
+	arr = malloc(nmemb * size);
+	if (!arr)
+		return (NULL);
+	ft_bzero(arr, nmemb * size);
+	return (arr);
 }
