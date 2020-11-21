@@ -6,14 +6,14 @@
 #    By: pkayleen <pkayleen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 18:18:12 by pkayleen          #+#    #+#              #
-#    Updated: 2020/11/03 15:48:32 by pkayleen         ###   ########.fr        #
+#    Updated: 2020/11/21 07:50:23 by pkayleen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 HEADER = libft.h
 FLAG = -Wall -Wextra -Werror
-OPTION = -c $(HEADER)
+OPTION = -c
 SRC = ft_atoi.c \
 	  ft_isalnum.c \
 	  ft_isalpha.c \
@@ -23,28 +23,46 @@ SRC = ft_atoi.c \
 	  ft_strlen.c \
 	  ft_strncmp.c \
 	  ft_tolower.c \
-	  ft_toupper.c
-OBJ = ft_atoi.o \
-	  ft_isalnum.o \
-	  ft_isalpha.o \
-	  ft_isascii.o \
-	  ft_isdigit.o \
-	  ft_isprint.o \
-	  ft_strlen.o \
-	  ft_strncmp.o \
-	  ft_tolower.o \
-	  ft_toupper.o
+	  ft_toupper.c \
+	  ft_strlcpy.c \
+	  ft_strchr.c \
+	  ft_strrchr.c \
+	  ft_strlcat.c \
+	  ft_memset.c \
+	  ft_memcpy.c \
+	  ft_memchr.c \
+	  ft_memcmp.c \
+	  ft_memccpy.c \
+	  ft_bzero.c \
+	  ft_calloc.c \
+	  ft_strdup.c \
+	  ft_substr.c \
+	  ft_strjoin.c \
+	  ft_putchar_fd.c \
+	  ft_putstr_fd.c \
+	  ft_putendl_fd.c \
+	  ft_putnbr_fd.c \
+	  ft_itoa.c \
+	  ft_strmapi.c \
+	  ft_strtrim.c
 
-c.o.:
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
-	gcc $(FLAG) $(OPTION) $(SRC)
-	ar rc $(NAME) $(OBJ)
+$(NAME): $(OBJ)
+		gcc $(FLAG) $(OPTION) $(SRC)
+		ar rc $(NAME) $(OBJ)
+
+%.o: %.c
+		gcc ${FLAGS} -c $< -o ${<:.c=.o}
 
 clean:
-	rm -f $(OBJ)
+		rm -f $(OBJ)
+
 fclean:	clean
-	rm -f $(NAME)
+		rm -f $(NAME)
+
 re:	fclean all
+
+.PHONY: all, clean, fclean, re
