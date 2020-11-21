@@ -6,7 +6,7 @@
 /*   By: pkayleen <pkayleen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 18:40:34 by pkayleen          #+#    #+#             */
-/*   Updated: 2020/11/16 18:58:39 by pkayleen         ###   ########.fr       */
+/*   Updated: 2020/11/19 01:05:02 by pkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 	char			*str;
 
+	if (!s || !f)
+		return (NULL);
 	str = (char *)malloc(ft_strlen(s) + 1);
 	if (!str)
 		return (NULL);
