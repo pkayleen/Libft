@@ -14,16 +14,23 @@
 #include "ft_strlcat.c"
 #include "ft_memset.c"
 #include "ft_bzero.c"
+#include "ft_substr.c"
+#include "ft_strjoin.c"
+#include "ft_putnbr_fd.c"
+#include "ft_itoa.c"
+#include "ft_strmapi.c"
+#include "ft_strtrim.c"
+#include "ft_strdup.c"
 #include <string.h>
 #include <stdio.h> //для printf
-#include <stdlib.h> // для atoi
+#include <stdlib.h> // для atoi и calloc
 #include <ctype.h> // для isalpha, isdigit, isascii
 //# include <bsd/string.h>
 
 int main()
 {
-    char s1[20]= "WWWWWWWWW";
-	char s2[20]= "WWWWWWWWW";
+    char s1[20]= "test";
+	char s2[20]= "tEst";
  //   char *ptr;
 
  //   ptr = strlcat(s2, s1, 20);
@@ -32,8 +39,8 @@ int main()
     printf("function ft_strlen: %zu\n", ft_strlen(s1));
     printf("function strlen: %zu\n", strlen(s1));
 */
-    printf("function ft_strncmp: %d\n", ft_strncmp(s1, s2, 10));
-    printf("function strncmp: %d\n", strncmp(s1, s2, 10));
+    printf("function ft_strncmp: %d\n", ft_strncmp(s1, s2, 4));
+    printf("function strncmp: %d\n", strncmp(s1, s2, 4));
 
     char chh;
  //   const char *strs;
@@ -118,8 +125,42 @@ int main()
     char a = 'a';
 
     printf("z to lowercase: %c\n", tolower(a));
-    printf("z to lowercase: %c", ft_tolower(a));
+    printf("z to lowercase: %c\n", ft_tolower(a));
 
 //	printf("function ft_memset: %d\n", ft_memset(s1, 'A', 6));
 //    printf("function memset: %s\n", memset(s1, 'A', 20));
+
+    char str[] = "Hello";
+    char str2[] = ", world!";
+    printf("substr: %s\n", ft_substr(str, 0, 20));
+    printf("strjoin: %s\n", ft_strjoin(str, str2));
+
+    ft_putnbr_fd(1234, 1);
+
+    printf("len of number: %ld\n", count_num(-2147483648));
+	printf("num to str: %s\n", ft_itoa(-2147483648));
+
+    char s3[] = "hello-world-";
+    char set3[] = "hello-";
+    char s4[] = "/n  /n /n ";
+    char set4[] = " /n";
+    char s5[] = "hello";
+    char set5[] = "";
+    printf("string1 after strtrim: %s\n", ft_strtrim(s3, set3));
+    printf("string2 after strtrim: %s\n", ft_strtrim(s4, set4));
+    printf("string2 after strtrim: %s\n", ft_strtrim(s5, set5));
+
+    char *ss;
+
+    ss = (char *)calloc(10, sizeof(char));
+    printf("ss after calloc: %s\n", ss);
+    ss = (char *)malloc(5);
+    printf("ss after malloc: %s\n", ss);
+
+    char ss1[6] = "12345";
+    char ss2[6] = "1234";
+
+    printf("string after strdup: %s\n", ft_strdup("HAHAHA \n tu me vois pas !"));
+    printf("diff after memcmp: %d", memcmp(ss1, ss2, 4));
+  //printf("string after memcpy: %s", ft_memcpy(ss1, ss2, 3));
 }
