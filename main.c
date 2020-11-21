@@ -12,7 +12,9 @@
 #include "ft_strchr.c"
 #include "ft_strrchr.c"
 #include "ft_strlcat.c"
+#include "ft_strnstr.c"
 #include "ft_memset.c"
+#include "ft_memmove.c"
 #include "ft_bzero.c"
 #include "ft_substr.c"
 #include "ft_strjoin.c"
@@ -161,6 +163,22 @@ int main()
     char ss2[6] = "1234";
 
     printf("string after strdup: %s\n", ft_strdup("HAHAHA \n tu me vois pas !"));
-    printf("diff after memcmp: %d", memcmp(ss1, ss2, 4));
+    printf("diff after memcmp: %d\n", memcmp(ss1, ss2, 4));
   //printf("string after memcpy: %s", ft_memcpy(ss1, ss2, 3));
+
+    char    strr[] = "";
+    // memcpy(strr, strr + 2, 4);
+    // printf("str after memcpy: %s\n", strr);
+// !!!src < dst && overlapping!!! <- с конца
+    ft_memmove(strr + 2, strr, 0);
+    printf("str after memmove: %s\n", strr);    //121234
+// src > dst && overlapping  <- все ок! данные из src не теряются
+    // ft_memmove(strr, strr + 2, 4);
+    // printf("str after ft_memmove: %s\n", strr);    // 345656
+
+    char haystack[] = "guy, hay hay!";
+    char needle[] = "hay";
+    printf("substr after strnstr: %s\n", strnstr(haystack, needle, 10));
+    printf("substr after strnstr: %s\n", ft_strnstr(haystack, needle, 10));
+
 }
