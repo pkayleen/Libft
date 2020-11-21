@@ -6,7 +6,7 @@
 /*   By: pkayleen <pkayleen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 17:17:17 by pkayleen          #+#    #+#             */
-/*   Updated: 2020/11/03 15:39:20 by pkayleen         ###   ########.fr       */
+/*   Updated: 2020/11/21 15:55:11 by pkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int i;
-	int num;
-	int sign;
+	long long int	i;
+	long long int	num;
+	long long int	sign;
 
 	i = 0;
 	num = 0;
