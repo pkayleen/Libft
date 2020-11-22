@@ -6,45 +6,24 @@
 /*   By: pkayleen <pkayleen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 19:16:14 by pkayleen          #+#    #+#             */
-/*   Updated: 2020/11/22 03:59:27 by pkayleen         ###   ########.fr       */
+/*   Updated: 2020/11/22 20:28:15 by pkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	len_word(char	*s, int i)
+static char	*read_word(const char *s, int *j, char delimiter)
 {
+	int		i;
+
+	i = 0;
+	while (s[i] != '\0' && s[i] != delimiter)
+		i++;
+	*j += i;
+	return (ft_substr(s, 0, i));
 }
 
-static int	search_ind(char	*s, int	i)
-{
-
-}
-
-static char	*read_word(char *s, int i, char delimiter)
-{
-	char	*word;
-	int		len;
-	char	*tmp;
-	int		j;
-
-	len = 0;
-	while (s[j] && s[j] != delimiter)
-		len++;
-	if (!(word = (char *)malloc(len + 1)))
-		return (NULL);
-	tmp = word;
-	word = ft_substr(s, i, len_word());
-	while (s[j] != '\0' && s[j] != delimiter)
-	{
-		word[j] = s[j];
-		j++;
-	}
-	free(tmp);
-	return (word);
-}
-
-static int	count_words(char *s, char delimiter)
+static int	count_words(char const *s, char delimiter)
 {
 	int		i;
 	int		len;
@@ -57,9 +36,9 @@ static int	count_words(char *s, char delimiter)
 	{
 		if (s[i] != delimiter)
 		{
+			len++;
 			if (len == 1)
 				count++;
-			len++;
 		}
 		else
 			len = 0;
@@ -73,6 +52,7 @@ char		**ft_split(char const *s, char c)
 	char	**str_split;
 	int		i;
 	int		j;
+	int		w_cntr;
 	int		len;
 
 	len = count_words(s, c);
@@ -80,16 +60,16 @@ char		**ft_split(char const *s, char c)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (i < len)
+	w_cntr = 0;
+	while (w_cntr < len)
 	{
-		while (s[j] != c)
-			j++;
-		*str_split[i] = read_word(s, j, c);
+		while (s[i] == c)
+			i++;
+		str_split[w_cntr] = read_word(&(s[i]), &j, c);
+		w_cntr++;
+		i += j;
 		j = 0;
-		while (j < len_word(s, i))
-			j++;
-		i++;
 	}
-	*str_split[i] = '\0';
+	str_split[w_cntr] = "\0";
 	return (str_split);
 }
